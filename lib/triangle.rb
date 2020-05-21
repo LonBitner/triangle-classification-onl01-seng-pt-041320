@@ -12,4 +12,7 @@ class Triangle
   if  
   end
 
+  class TriangleError < StandardError
+  
+  end
 end
