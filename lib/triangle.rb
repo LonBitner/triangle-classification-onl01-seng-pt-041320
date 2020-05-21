@@ -1,4 +1,4 @@
 class Triangle
   
-  def triangle_sides
+  def initialize(side_1, )
 end
