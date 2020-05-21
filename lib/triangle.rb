@@ -26,6 +26,9 @@ class Triangle
       self.kind = :scalene
     end
   end
+  
+  def validate_triangle
+    real_triangle = [{(a + b + c)]
 end
 
   class TriangleError < StandardError
