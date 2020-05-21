@@ -10,9 +10,14 @@ class Triangle
   def kind
     
   if (@s1 * @s2 * @s3) == 0 || (@s1 + @s2) <= @s3 || (@s2 +@s3) <= @s1 || (@s3 + @s1) <= @s2
+    
+  begin
     raise TriangleError
-  
-  end
+    puts error.message
+    end
+    
+  elsif s1 == s2 && s1 == s3
+    self.kind = :equalateral
   end
 
   class TriangleError < StandardError
