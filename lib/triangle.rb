@@ -1,38 +1,38 @@
 class Triangle
-  attr_reader :s1, :s2, :s3
-  
-  def initialize(s1, s2, s3)
-    @s1 = s1
-    @s2 = s2
-    @s3 = s3
+  def initialize(side_1, side_2, side_3)
+    @side_1 = side_1
+    @side_2 = side_2
+    @sides_3 = side_3
   end
-  
+
+  def valid?
+    sum_one_two = @triangle_sides[0] + @triangle_sides[1]
+    sum_one_three = @triangle_sides[0] + @triangle_sides[2]
+    sum_two_three = @triangle_sides[1] + @triangle_sides[2]
+
+    if (@triangle_sides.none? {|side| side <= 0}) &&
+      (sum_one_two > @triangle_sides[2] && sum_one_three > @triangle_sides[1] && sum_two_three > @triangle_sides[0])
+      return true
+    else
+      return false
+    end
+  end
+
   def kind
-  if (s1 * s2 * s3) == 0 || (s1 + s2) <= s3 || (s2 +s3) <= s1 || (s3 +s1) <= s2
-    
-    begin
-     raise TriangleError
-    end
-    
-    elsif s1 == s2 && s1 == s3
-     self.kind = :equalateral
-    
-  
-    elsif s1 == s2 || s1 == s3 || s2 == s3
-     self.kind = :isosceles
-    
-  
-   else
-      self.kind = :scalene
+    if valid?
+      if @triangle_sides.uniq.length == 1
+        return :equilateral
+      elsif @triangle_sides.uniq.length == 2
+        return :isosceles
+      else
+        return :scalene
+      end
+    else
+      raise TriangleError
     end
   end
-  
-  def validate_triangle
-    real_triangle = [{(a + b + c)]
 end
 
-  class TriangleError < StandardError
-    def message
-      puts "not a triangle"
-  end
+class TriangleError < StandardError
+
 end
