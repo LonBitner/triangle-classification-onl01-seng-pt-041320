@@ -19,6 +19,7 @@ class Triangle
   elsif s1 == s2 && s1 == s3
     self.kind = :equalateral
   end
+end
 
   class TriangleError < StandardError
   
